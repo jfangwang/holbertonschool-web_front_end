@@ -273,8 +273,8 @@ ul.row {
 .card-work .card-image img {
     height: 30rem;
     width: 100%;
-    --object-fit: cover;
-    bottom: 0;
+    object-fit: cover;
+    vertical-align: bottom;
 }
 .card-work .card-inner {
     position: absolute;
@@ -283,7 +283,7 @@ ul.row {
     right: -0.1rem;
     z-index: 1;
 }
-.card-inner:hover {
+.card-work:hover .card-inner {
     background-color: rgba(0, 0, 0, 0.7);
 }
 .card-work .card-title {
@@ -308,4 +308,16 @@ ul.row {
 }
 .card-work:hover .card-title {
     opacity: 1;
+}
+.card-testimonial .card-quote {
+    position: relative;
+}
+.card-testimonial .card-quote::before {
+    content: \201C;
+    position: absolute;
+    top: 04.5rem;
+    left: -1rem;
+    color: #efeded;
+    font-size: 10rem;
+    z-index: -1;
 }
