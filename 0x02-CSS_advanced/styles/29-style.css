@@ -33,7 +33,7 @@
     --nav-item-letter-spacing: 0.04rem;
     --nav-item-display: inline-block;
     --nav-item-margin: 0 0 3rem 0;
-    --nav-item-link-hover: var(--color-primary);
+    --nav-item-link-hover: var(--color-white);
     --section-tagline-margin: 0;
     --button-display: inline-block;
     --button-padding: 1.5rem 3rem;
@@ -156,6 +156,19 @@ a:active {
     display: var(--nav-item-display);
     margin: var(--nav-item-margin);
 }
+.nav .nav-link::before {
+    content: empty;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-white);
+    width: 0;
+    height: 0.2rem;
+}
+.nav .nav-item:hover .nav-link::before {
+    background-color: var(--color-primary);
+    width: 100%;
+}
 .nav .nav-link {
     display: block;
     padding: 0.5rem 1rem;
@@ -245,9 +258,9 @@ ul.row {
     padding: var(--header-padding);
 }
 .header-logo {
-    position: var(--header-logo-link-position);
+    position: var(--header-logo-position);
 }
-.header-logo a{
+.header-logo a {
     display: var(--header-logo-link-display);
     position: var(--header-logo-link-position);
     top: var(--header-logo-link-top);
