@@ -273,7 +273,7 @@ ul.row {
 .card-work .card-image img {
     height: 30rem;
     width: 100%;
-    object-fit: cover;
+    --object-fit: cover;
     bottom: 0;
 }
 .card-work .card-inner {
