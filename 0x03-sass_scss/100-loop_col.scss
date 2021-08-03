@@ -1,0 +1,6 @@
+/* columns and operators */
+@for $class from 1 to 5 {
+    .col-#{$class} {
+        width: (100%/$class);
+    }
+}
