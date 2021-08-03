@@ -1,9 +1,11 @@
 /* margin mixin */
-@mixin body {
+@mixin m1($l, $r) {
     margin-left: 10px;
     margin-right: 10px;
 }
-  
+body {
+    @include m1(10px, 10px);
+}
 div {
-    @include body;
+    @include m1(10px, 10px);
 }
