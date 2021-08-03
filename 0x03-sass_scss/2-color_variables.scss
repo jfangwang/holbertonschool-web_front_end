@@ -1,0 +1,14 @@
+/* Color Variables */
+$color1: #3D3D3D;
+$color2: #6D6D6D;
+body {
+    color: $color1;
+}
+  
+p {
+    color: $color1;
+}
+
+body, h2 {
+    background-color: $color2;
+}
