@@ -1,0 +1,55 @@
+:root {
+  /*new primary color*/
+  --primary: #E0003C;
+  /* Button color */
+  --btn-sudo-color: #BC1340;
+  /* Button accent color */
+  --btn-accent-color: var(--primary);
+
+  /* link colors */
+  --link-color: var(--primary);
+
+  /* card borders */
+  --card-bord-color: var(--primary)
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  background-color: var(--btn-sudo-color);
+}
+
+.btn-outline-primary {
+  color: var(--btn-accent-color);
+  border-color: var(--btn-accent-color);
+}
+
+a.text-dark:hover, a.text-dark:focus, a:hover, a:focus {
+  color: var(--link-color) !important;
+}
+
+.border-bottom {
+  border-color: var(--primary) !important;
+}
+
+.card {
+  border-radius: 1rem;
+  background-color: var(--primary);
+  border-color: var(--card-bord-color);
+}
+
+.card-header {
+  color: white;
+}
+
+.card-body, .card-footer {
+  background-color: white;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.text-muted {
+  color: #8C8C8C;
+}
