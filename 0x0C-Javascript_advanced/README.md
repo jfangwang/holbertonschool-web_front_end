@@ -1,0 +1,1 @@
+Welcome to Lexical Scoping and Javascript Advanced
