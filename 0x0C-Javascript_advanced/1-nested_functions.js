@@ -1,17 +1,23 @@
-// Nested Functions
+  /*
+* outer - prints out the full name of a user
+* Return: does not return any values
+*/
 
-var globalVariable = "Welcome";
+globalVariable = "Welcome";
 
 function outer() {
-  alert(globalVariable);
-  var course = "Holberton";
-  function inner() {
-    alert(globalVariable + " " + course);
-    var exclamation = "!";
-    function inception() {
-      alert(globalVariable + " " + course + exclamation)
+    let course = "Holberton";
+    alert(globalVariable);
+    function inner() {
+        let exclamation = '!';
+        alert(globalVariable + ' ' + course);
+        function inception() {
+            alert (globalVariable + ' ' + course + exclamation)
+
+        }
+        inception()
     }
-    inception();
-  }
-  inner();
+    inner();
 }
+
+outer();

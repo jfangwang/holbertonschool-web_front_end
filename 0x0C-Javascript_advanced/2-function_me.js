@@ -1,7 +1,9 @@
 // 2 = Function Me
 
 function welcomeMessage(fullName) {
-  alert("Welcome " + fullName);
+  return function () {
+    alert("Welcome " + fullName);
+  }
 }
 var guillaume = welcomeMessage("Guillaume");
 var alex = welcomeMessage("Alex");

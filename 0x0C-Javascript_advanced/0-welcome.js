@@ -1,5 +1,9 @@
-// 0 - Lexical Scoping
-
+  /*
+* welcome - prints out the full name of a user
+* @firstName: First name of the user (String)
+* @lastName: Last name of the user (String)
+* Return: does not return any values
+*/
 function welcome(firstName, lastName) {
   var fullName = firstName + " " + lastName;
   function displayFullName() {

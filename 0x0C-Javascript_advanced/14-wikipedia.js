@@ -1,25 +1,21 @@
 function createElement(data) {
-  let paragraph = document.createElement("p");
-  let content = document.createTextNode(data);
-  paragraph.appendChild(content);
-  document.body.appendChild(paragraph);
+  const p = document.createElement("P");
+  p.innerText = data;
+
+  const body = document.querySelector("body");
+  body.appendChild(p);
 }
 
 function queryWikipedia(callback) {
-  let request = new XMLHttpRequest();
-  request.open("GET", "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Stack%20Overflow&origin=*", true);
-  request.onreadystatechange = function (event) {
-    if (request.readyState === 4) {
-      if (request.status === 200) { 
-        callback(JSON.parse(request.responseText).query.pages[21721040].extract)
-      } 
-      else {
-        const error = new Error('Error');
-        return callback(error, null);
-      }
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      callback(xhttp.response.query.pages["21721040"].extract);
     }
-  }
-  request.send();
+  };
+  const URL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Stack%20Overflow&origin=*";
+  xhttp.open("GET", URL, true);
+  xhttp.responseType = "json";
+  xhttp.send(null);
 }
-
 queryWikipedia(createElement);
