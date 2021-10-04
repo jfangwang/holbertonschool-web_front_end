@@ -4,13 +4,9 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Task 9</title>
-  <style>
-    .loading {
-      opacity: 0.2;
-    }
-  </style>
+  <title>Task 8</title>
   <script type="application/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <style> .loading { opacity: 0.2; } </style>
 </head>
 
 <body>
@@ -26,6 +22,7 @@
         });
       }
       function addNewArticle(id, title, snippet) {
+        // create a unique class name
         let randId = Math.floor(Math.random() * Date.now())
         $(".list").append("<li>");
         $("li").last().addClass(`${randId}`);
@@ -37,9 +34,6 @@
         $.ajax({
           type: "GET",
           url: `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${search}&format=json&sroffset=${offset}`,
-          beforeSend: function () {
-            displayLoading(1);
-          },
           success: function (res) {
             let resArr = res.query.search;
             for (let obj in resArr) {
@@ -50,9 +44,6 @@
           },
           error: function () {
             console.log("Something went wrong.");
-          },
-          complete: function () {
-            displayLoading(0);
           }
         })
       }
@@ -71,10 +62,12 @@
           queryWikipedia($("input").eq(0).val(), this.className * 10);
         });
       }
-
       function displayLoading(loading) {
-        if (loading) $(".list").wrap("<div class=\"loading\"></div>");
-        else $(".list").unwrap();
+        if (loading == true) {
+          $("ul").first().wrap($("<div></div>").attr("class", "loading"));
+        } else if (loading == false) {
+          $("ul").first().unwrap();
+        }
       }
       createSearchForm();
     });

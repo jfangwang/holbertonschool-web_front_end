@@ -21,6 +21,7 @@
         });
       }
       function addNewArticle(id, title, snippet) {
+        // create a unique class name
         let randId = Math.floor(Math.random() * Date.now())
         $(".list").append("<li>");
         $("li").last().addClass(`${randId}`);
