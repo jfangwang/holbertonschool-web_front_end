@@ -9,9 +9,21 @@
 </head>
 <body>
   <h1>Login to the website</h1>
-  <input placeholder="Firstname" id="firstName" value="firstname">
-  <input placeholder="Email" id="email" value="email">
+  <input type="text" id="firstname" placeholder="firstname">
+  <input type="email" id="email" placeholder="lastname">
+  <button onclick="setCookies()">Log me in</button>
   <h1>Cookies</h1>
-  <button>Show the cookies</button>
+  <button onclick="showCookies()">Show the cookies</button>
+  <script>
+    function setCookies() {
+      document.cookie = `firstname=${document.getElementById("firstname").value}`;
+      document.cookie = `email=${document.getElementById("email").value}`;
+    }
+    function showCookies() {
+      const paragraph = document.createElement("p");
+      paragraph.innerHTML = `Cookies: ${document.cookie}`;
+      document.querySelector("body").append(paragraph);
+    }
+  </script>
 </body>
 </html>
