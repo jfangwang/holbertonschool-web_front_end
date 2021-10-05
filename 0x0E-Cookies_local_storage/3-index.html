@@ -59,8 +59,8 @@
 
   function deleteCookiesAndShowForm() {
     const date = new Date().toUTCString();
-    document.cookie = `firstname=;expires=${date}`;
-    document.cookie = `email=;expires=${date}`;
+    document.cookie = `firstname=;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+    document.cookie = `email=;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
     showForm();
   }
 

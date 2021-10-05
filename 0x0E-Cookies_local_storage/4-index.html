@@ -6,44 +6,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="src/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
   <title>Create Basic Cookie</title>
 </head>
 
 <body>
   <div id="form">
-    <h2>Login to the website</h2>
+    <h1>Login to the website</h1>
     <input type="text" id="firstname" placeholder="Firstname">
     <input type="email" id="email" placeholder="Email">
-    <button onclick="setCookies()">Log me in</button>
+    <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
   </div>
+
 </body>
 <script>
-  function setCookies() {
-    var now = new Date();
-    now.setHours(240);
-    var exp = new Date(now);
-    let exp_date = document.cookie = 'expires=' + exp.toUTCString();
-    document.cookie = `firstname=${document.getElementById("firstname").value}; ` + exp_date + ';'
-    document.cookie = `email=${document.getElementById("email").value}; ` + exp_date + ';'
-
-  }
-  function showCookies() {
-    const paragraph = document.createElement("p");
-    const getEmail = getCookie("email").split("=")[1];
-    const getFirst = getCookie("firstname").split("=")[1];
-    paragraph.innerHTML = "Email: " + getEmail + " - " + "Firstname: " + getFirst;
-    document.body.append(paragraph);
-  }
-  function getCookie(name) {
-    const cookies = decodeURIComponent(document.cookie).split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      let valuePair = cookies[i].split('=');
-      if (valuePair[0].trim() == name) {
-        return (cookies[i]);
-      }
+  function setCookiesAndShowWelcomeMessage() {
+    const firstName = document.querySelector("#firstname").value;
+    const email = document.querySelector("#email").value;
+    if (firstName && email) {
+      Cookies.set("firstname", firstName, { expires: 10 });
+      Cookies.set("email", email, { expires: 10 });
     }
-    return ("");
+    showWelcomeMessageOrForm();
   }
+
+  function showCookies() {
+    const cookies = document.cookie;
+    const para = document.createElement("p");
+    para.innerHTML = `Email: ${Cookies.get(
+      "email"
+    )} - Firstname: ${Cookies.get("firstname")}`;
+    document.body.appendChild(para);
+  }
+
   function showForm() {
     const message = document.querySelector("#welcome-msg");
     if (message) {
@@ -57,9 +52,8 @@
   }
 
   function deleteCookiesAndShowForm() {
-    const date = new Date().toUTCString();
-    document.cookie = `firstname=;expires=${date}`;
-    document.cookie = `email=;expires=${date}`;
+    Cookies.remove("firstname");
+    Cookies.remove("email");
     showForm();
   }
 
@@ -69,13 +63,14 @@
     } else {
       const welcomeMsg = document.createElement("div");
       welcomeMsg.setAttribute("id", "welcome-msg");
-      welcomeMsg.innerHTML = `<h1>Welcome: ${getCookie(
+      welcomeMsg.innerHTML = `<h1>Welcome: ${Cookies.get(
         "firstname"
       )} <a style="font-weight: normal; font-style: italic; margin-left: 10px;" onclick="deleteCookiesAndShowForm()">(logout)</a></h1>`;
       document.body.appendChild(welcomeMsg);
       hideForm();
     }
   }
+
   showWelcomeMessageOrForm();
 </script>
 
