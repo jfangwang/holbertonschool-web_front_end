@@ -69,6 +69,14 @@
           $("ul").first().unwrap();
         }
       }
+      function displayLoading(loading) {
+        const $ul = $("ul").first();
+        if (loading) {
+          $ul.wrap("<div class='loading'></div>");
+        } else {
+          $ul.unwrap();
+        }
+      }
       createSearchForm();
     });
   </script>
