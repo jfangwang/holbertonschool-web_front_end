@@ -11,12 +11,11 @@
 
 <body>
   <div id="form">
-    <h1>Login to the website</h1>
+    <h2>Login to the website</h2>
     <input type="text" id="firstname" placeholder="Firstname">
     <input type="email" id="email" placeholder="Email">
     <button onclick="setCookies()">Log me in</button>
   </div>
-
 </body>
 <script>
   function setCookies() {
@@ -40,7 +39,7 @@
     for (let i = 0; i < cookies.length; i++) {
       let valuePair = cookies[i].split('=');
       if (valuePair[0].trim() == name) {
-        return (valuePair[1].trim());
+        return (cookies[i]);
       }
     }
     return ("");
@@ -70,7 +69,7 @@
     } else {
       const welcomeMsg = document.createElement("div");
       welcomeMsg.setAttribute("id", "welcome-msg");
-      welcomeMsg.innerHTML = `<h1>Welcome ${getCookie(
+      welcomeMsg.innerHTML = `<h1>Welcome: ${getCookie(
         "firstname"
       )} <a style="font-weight: normal; font-style: italic; margin-left: 10px;" onclick="deleteCookiesAndShowForm()">(logout)</a></h1>`;
       document.body.appendChild(welcomeMsg);
